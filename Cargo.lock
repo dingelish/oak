@@ -56,14 +56,13 @@ dependencies = [
 
 [[package]]
 name = "ahash"
-version = "0.8.5"
+version = "0.7.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cd7d5a2cecb58716e47d67d5703a249964b14c7be1ec3cad3affc295b2d1c35d"
+checksum = "5a824f2aa7e75a0c98c5a504fceb80649e9c35265d44525b5f94de4771a395cd"
 dependencies = [
- "cfg-if",
+ "getrandom",
  "once_cell",
  "version_check",
- "zerocopy 0.7.3",
 ]
 
 [[package]]
@@ -170,7 +169,7 @@ checksum = "7b2d0f03b3640e3a630367e40c468cb7f309529c708ed1d88597047b0e7c6ef7"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.28",
+ "syn 2.0.38",
 ]
 
 [[package]]
@@ -294,9 +293,9 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 
 [[package]]
 name = "bitflags"
-version = "2.3.3"
+version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "630be753d4e58660abd17930c71b647fe46c27ea6b63cc59e1e3851406972e42"
+checksum = "327762f6e5a765692301e5bb513e0d9fef63be86bbc14528052b1cd3e6f03e07"
 
 [[package]]
 name = "bitvec"
@@ -683,7 +682,7 @@ checksum = "83fdaf97f4804dcebfa5862639bc9ce4121e82140bec2a987ac5140294865b5b"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.28",
+ "syn 2.0.38",
 ]
 
 [[package]]
@@ -940,12 +939,9 @@ dependencies = [
 
 [[package]]
 name = "fastrand"
-version = "1.8.0"
+version = "2.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a7a407cfaa3385c4ae6b23e84623d48c2798d06e3e6a1878f7f59f17b3f86499"
-dependencies = [
- "instant",
-]
+checksum = "25cbce373ec4653f1a01a31e8a5e5ec0c622dc27ff9c4e6606eefef5cbbed4a5"
 
 [[package]]
 name = "ff"
@@ -965,9 +961,9 @@ checksum = "d0870c84016d4b481be5c9f323c24f65e31e901ae618f0e80f4308fb00de1d2d"
 
 [[package]]
 name = "filetime"
-version = "0.2.21"
+version = "0.2.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5cbc844cecaee9d4443931972e1289c8ff485cb4cc2767cb03ca139ed6885153"
+checksum = "d4029edd3e734da6fe05b6cd7bd2960760a616bd2ddd0d59a0124746d6272af0"
 dependencies = [
  "cfg-if",
  "libc",
@@ -1188,12 +1184,6 @@ name = "hashbrown"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
-
-[[package]]
-name = "hashbrown"
-version = "0.13.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "43a3c133739dddd0d2990f9a4bdf8eb4b21ef50e4851ca85ab661199821d510e"
 dependencies = [
  "ahash",
 ]
@@ -1394,7 +1384,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1885e79c1fc4b10f0e172c475f458b7f7b93061064d98c3293e98c5ba0c8b399"
 dependencies = [
  "autocfg",
- "hashbrown 0.12.3",
+ "hashbrown",
 ]
 
 [[package]]
@@ -1413,15 +1403,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "instant"
-version = "0.1.12"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a5bbe824c507c5da5956355e86a746d82e0e1464f65d862cc5e71da70e94b2c"
-dependencies = [
- "cfg-if",
-]
-
-[[package]]
 name = "invalid_module"
 version = "0.1.0"
 
@@ -1437,14 +1418,13 @@ dependencies = [
 
 [[package]]
 name = "is-terminal"
-version = "0.4.3"
+version = "0.4.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22e18b0a45d56fe973d6db23972bf5bc46f988a4a2385deac9cc29572f09daef"
+checksum = "cb0889898416213fab133e1d33a0e5858a48177452750691bde3666d0fdbaf8b"
 dependencies = [
  "hermit-abi 0.3.3",
- "io-lifetimes",
- "rustix",
- "windows-sys 0.45.0",
+ "rustix 0.38.21",
+ "windows-sys 0.48.0",
 ]
 
 [[package]]
@@ -1475,7 +1455,7 @@ dependencies = [
 name = "key_value_lookup"
 version = "0.1.0"
 dependencies = [
- "hashbrown 0.13.2",
+ "hashbrown",
  "http",
  "log",
  "maplit",
@@ -1494,9 +1474,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.139"
+version = "0.2.149"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
+checksum = "a08173bc88b7955d1b3145aa561539096c421ac8debde8cbc3612ec635fee29b"
 
 [[package]]
 name = "libm"
@@ -1527,6 +1507,12 @@ name = "linux-raw-sys"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f051f77a7c8e6957c0696eac88f26b0117e54f52d3fc682ab19397a8812846a4"
+
+[[package]]
+name = "linux-raw-sys"
+version = "0.4.10"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "da2479e8c062e40bf0066ffa0bc823de0a9368974af99c9f6df941d2c231e03f"
 
 [[package]]
 name = "location_utils"
@@ -1859,7 +1845,7 @@ name = "oak_channel"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "bytes",
  "log",
  "micro_rpc",
@@ -2013,7 +1999,7 @@ name = "oak_containers_syslogd"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "clap",
  "nix 0.26.2",
  "oak_containers_orchestrator_client",
@@ -2057,7 +2043,7 @@ dependencies = [
 name = "oak_dice"
 version = "0.1.0"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "coset",
  "hex",
  "hkdf",
@@ -2066,7 +2052,7 @@ dependencies = [
  "sha2",
  "static_assertions",
  "strum",
- "zerocopy 0.7.3",
+ "zerocopy",
 ]
 
 [[package]]
@@ -2095,7 +2081,7 @@ name = "oak_echo_service"
 version = "0.1.0"
 dependencies = [
  "async-trait",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -2187,7 +2173,7 @@ dependencies = [
  "command-fds",
  "env_logger",
  "futures",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -2224,7 +2210,7 @@ dependencies = [
 name = "oak_functions_sdk"
 version = "0.1.0"
 dependencies = [
- "hashbrown 0.13.2",
+ "hashbrown",
  "lazy_static",
  "micro_rpc",
  "micro_rpc_build",
@@ -2263,7 +2249,7 @@ dependencies = [
  "benchmark",
  "byteorder",
  "env_logger",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -2324,7 +2310,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-trait",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -2342,7 +2328,7 @@ dependencies = [
  "bmrng",
  "clap",
  "command-fds",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -2355,10 +2341,10 @@ dependencies = [
 name = "oak_linux_boot_params"
 version = "0.1.0"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "static_assertions",
  "strum",
- "zerocopy 0.7.3",
+ "zerocopy",
 ]
 
 [[package]]
@@ -2402,7 +2388,7 @@ dependencies = [
  "arrayvec",
  "assertables",
  "atomic_refcell",
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "bitvec",
  "goblin",
  "hkdf",
@@ -2427,7 +2413,7 @@ dependencies = [
  "uart_16550",
  "virtio-drivers",
  "x86_64",
- "zerocopy 0.7.3",
+ "zerocopy",
 ]
 
 [[package]]
@@ -2446,7 +2432,7 @@ dependencies = [
 name = "oak_restricted_kernel_interface"
 version = "0.1.0"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "strum",
 ]
 
@@ -2455,14 +2441,14 @@ name = "oak_sev_guest"
 version = "0.1.0"
 dependencies = [
  "aes-gcm",
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "lock_api",
  "snafu",
  "spinning_top",
  "static_assertions",
  "strum",
  "x86_64",
- "zerocopy 0.7.3",
+ "zerocopy",
 ]
 
 [[package]]
@@ -2477,7 +2463,7 @@ dependencies = [
 name = "oak_stage0"
 version = "0.1.0"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "coset",
  "elf",
  "hex",
@@ -2496,14 +2482,14 @@ dependencies = [
  "static_assertions",
  "strum",
  "x86_64",
- "zerocopy 0.7.3",
+ "zerocopy",
 ]
 
 [[package]]
 name = "oak_tdx_guest"
 version = "0.1.0"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "strum",
  "x86_64",
 ]
@@ -2514,7 +2500,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "async-trait",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -2538,7 +2524,7 @@ name = "oak_virtio"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "log",
  "rand",
  "rust-hypervisor-firmware-virtio",
@@ -2883,9 +2869,9 @@ dependencies = [
 
 [[package]]
 name = "proc-macro2"
-version = "1.0.63"
+version = "1.0.69"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7b368fba921b0dce7e60f5e04ec15e565b3303972b42bcfde1d0713b881959eb"
+checksum = "134c189feb4956b20f6f547d2cf727d4c0fe06722b20a0eec87ed445a97f92da"
 dependencies = [
  "unicode-ident",
 ]
@@ -2902,7 +2888,7 @@ dependencies = [
  "flate2",
  "hex",
  "lazy_static",
- "rustix",
+ "rustix 0.36.16",
 ]
 
 [[package]]
@@ -2970,7 +2956,7 @@ dependencies = [
  "clap",
  "command-fds",
  "env_logger",
- "hashbrown 0.13.2",
+ "hashbrown",
  "lazy_static",
  "log",
  "micro_rpc",
@@ -2987,7 +2973,7 @@ name = "quirk_echo_service"
 version = "0.1.0"
 dependencies = [
  "async-trait",
- "hashbrown 0.13.2",
+ "hashbrown",
  "log",
  "micro_rpc",
  "micro_rpc_build",
@@ -3041,9 +3027,9 @@ dependencies = [
 
 [[package]]
 name = "redox_syscall"
-version = "0.2.16"
+version = "0.3.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fb5a58c1855b4b6819d59012155603f0b22ad30cad752600aadfcb695265519a"
+checksum = "567664f262709473930a4bf9e51bf2ebf3348f2e748ccc50dea20646858f8f29"
 dependencies = [
  "bitflags 1.3.2",
 ]
@@ -3146,7 +3132,7 @@ name = "rust-hypervisor-firmware-virtio"
 version = "0.1.0"
 dependencies = [
  "atomic_refcell",
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "log",
  "x86_64",
 ]
@@ -3170,8 +3156,21 @@ dependencies = [
  "errno",
  "io-lifetimes",
  "libc",
- "linux-raw-sys",
+ "linux-raw-sys 0.1.4",
  "windows-sys 0.45.0",
+]
+
+[[package]]
+name = "rustix"
+version = "0.38.21"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2b426b0506e5d50a7d8dafcf2e81471400deb602392c7dd110815afb4eaf02a3"
+dependencies = [
+ "bitflags 2.4.1",
+ "errno",
+ "libc",
+ "linux-raw-sys 0.4.10",
+ "windows-sys 0.48.0",
 ]
 
 [[package]]
@@ -3376,7 +3375,7 @@ checksum = "4eca7ac642d82aa35b60049a6eccb4be6be75e599bd2e9adb5f875a737654af2"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.28",
+ "syn 2.0.38",
 ]
 
 [[package]]
@@ -3557,7 +3556,7 @@ dependencies = [
  "static_assertions",
  "strum",
  "x86_64",
- "zerocopy 0.7.3",
+ "zerocopy",
 ]
 
 [[package]]
@@ -3645,7 +3644,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "rustversion",
- "syn 2.0.28",
+ "syn 2.0.38",
 ]
 
 [[package]]
@@ -3690,9 +3689,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "2.0.28"
+version = "2.0.38"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "04361975b3f5e348b2189d8dc55bc942f278b2d482a6a0365de5bdd62d351567"
+checksum = "e96b79aaa137db8f61e26363a0c9b47d8b4ec75da28b7d1d614c2303e232408b"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -3749,15 +3748,15 @@ dependencies = [
 
 [[package]]
 name = "tempfile"
-version = "3.4.0"
+version = "3.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af18f7ae1acd354b992402e9ec5864359d693cd8a79dcbef59f76891701c1e95"
+checksum = "cb94d2f3cc536af71caac6b6fcebf65860b347e7ce0cc9ebe8f70d3e521054ef"
 dependencies = [
  "cfg-if",
  "fastrand",
  "redox_syscall",
- "rustix",
- "windows-sys 0.42.0",
+ "rustix 0.38.21",
+ "windows-sys 0.48.0",
 ]
 
 [[package]]
@@ -4019,7 +4018,7 @@ version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "61c5bb1d698276a2443e5ecfabc1008bf15a36c12e6a7176e7bf089ea9131140"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "bytes",
  "futures-core",
  "futures-util",
@@ -4135,9 +4134,9 @@ dependencies = [
 
 [[package]]
 name = "unsafe-libyaml"
-version = "0.2.5"
+version = "0.2.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bc7ed8ba44ca06be78ea1ad2c3682a43349126c8818054231ee6f4748012aed2"
+checksum = "f28467d3e1d3c6586d8f25fa243f544f5800fec42d97032474e17222c2b75cfa"
 
 [[package]]
 name = "untrusted"
@@ -4159,13 +4158,13 @@ checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
 
 [[package]]
 name = "virtio-drivers"
-version = "0.6.0"
+version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "721c9c6a36ebc9bbfedb1933130f0fa6153bf1fa7c9272e4baf7f6f48dfff3bd"
+checksum = "f4fd50c69dad27f9d266e42be17da981cd507d6cd47077558a81c25169431392"
 dependencies = [
- "bitflags 2.3.3",
+ "bitflags 2.4.1",
  "log",
- "zerocopy 0.6.5",
+ "zerocopy",
 ]
 
 [[package]]
@@ -4222,7 +4221,7 @@ dependencies = [
  "once_cell",
  "proc-macro2",
  "quote",
- "syn 2.0.28",
+ "syn 2.0.38",
  "wasm-bindgen-shared",
 ]
 
@@ -4244,7 +4243,7 @@ checksum = "54681b18a46765f095758388f2d0cf16eb8d4169b639ab575a8f5693af210c7b"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.28",
+ "syn 2.0.38",
  "wasm-bindgen-backend",
  "wasm-bindgen-shared",
 ]
@@ -4534,12 +4533,12 @@ dependencies = [
 
 [[package]]
 name = "x86_64"
-version = "0.14.10"
+version = "0.14.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "100555a863c0092238c2e0e814c1096c1e5cf066a309c696a87e907b5f8c5d69"
+checksum = "3b835097a84e4457323331ec5d6eb23d096066cbfb215d54096dcb4b2e85f500"
 dependencies = [
  "bit_field",
- "bitflags 1.3.2",
+ "bitflags 2.4.1",
  "rustversion",
  "volatile",
 ]
@@ -4591,44 +4590,23 @@ dependencies = [
 
 [[package]]
 name = "zerocopy"
-version = "0.6.5"
+version = "0.7.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96f8f25c15a0edc9b07eb66e7e6e97d124c0505435c382fde1ab7ceb188aa956"
+checksum = "81ba595b9f2772fbee2312de30eeb80ec773b4cb2f1e8098db024afadda6c06f"
 dependencies = [
  "byteorder",
- "zerocopy-derive 0.6.5",
-]
-
-[[package]]
-name = "zerocopy"
-version = "0.7.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7a7af71d8643341260a65f89fa60c0eeaa907f34544d8f6d9b0df72f069b5e74"
-dependencies = [
- "byteorder",
- "zerocopy-derive 0.7.3",
+ "zerocopy-derive",
 ]
 
 [[package]]
 name = "zerocopy-derive"
-version = "0.6.5"
+version = "0.7.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "855e0f6af9cd72b87d8a6c586f3cb583f5cdcc62c2c80869d8cd7e96fdf7ee20"
+checksum = "772666c41fb6dceaf520b564b962d738a8e1a83b41bd48945f50837aed78bb1d"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.28",
-]
-
-[[package]]
-name = "zerocopy-derive"
-version = "0.7.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9731702e2f0617ad526794ae28fbc6f6ca8849b5ba729666c2a5bc4b6ddee2cd"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.28",
+ "syn 2.0.38",
 ]
 
 [[package]]
