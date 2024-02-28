@@ -32,6 +32,9 @@ docker export "$NEW_DOCKER_CONTAINER_ID" > target/image.tar
 ls -lah target/image.tar
 # Hack, as Docker doesn't give us a `/etc/hosts` which means `localhost` won't resovle.
 tar --append --file=target/image.tar --directory=files etc/hosts
-xz --force target/image.tar
+xz -k --force target/image.tar # Preserve the tar
+
+# Create a qcow2 image for cloud hypervisor
+virt-make-fs --format=qcow2 --type=ext4 --size=4G target/image.tar target/output.img
 
 docker rm "$NEW_DOCKER_CONTAINER_ID"
