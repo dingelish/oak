@@ -1,10 +1,10 @@
 [Unit]
 Description=Reset root password
-ConditionKernelCommandLine=debug
+#ConditionKernelCommandLine=debug
 
 [Install]
 WantedBy=getty.target
 
 [Service]
 Type=oneshot
-ExecStart=passwd --delete --expire root
+ExecStart=/bin/sh -c 'echo root:root|/usr/sbin/chpasswd'

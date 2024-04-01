@@ -2,8 +2,10 @@
 Description=Oak Containers Orchestrator
 After=network-online.target
 Wants=network-online.target
-FailureAction=poweroff-force
-SuccessAction=poweroff-force
+#FailureAction=poweroff-force
+#SuccessAction=poweroff-force
+FailureAction=none
+SuccessAction=none
 
 [Service]
 Type=simple

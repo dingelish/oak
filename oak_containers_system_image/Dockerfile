@@ -5,7 +5,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN apt-get --yes update \
   && apt-get install --yes --no-install-recommends \
-  systemd systemd-sysv dbus udev runc \
+  systemd systemd-sysv dbus udev runc net-tools isc-dhcp-client iproute2 \
   # Cleanup
   && apt-get clean \
   && rm --recursive --force /var/lib/apt/lists/*

@@ -32,6 +32,8 @@ docker export "$NEW_DOCKER_CONTAINER_ID" > target/image.tar
 ls -lah target/image.tar
 # Hack, as Docker doesn't give us a `/etc/hosts` which means `localhost` won't resovle.
 tar --append --file=target/image.tar --directory=files etc/hosts
-xz --force target/image.tar
+xz -k --force target/image.tar
+
+virt-make-fs --format=qcow2 --type=ext4 --size=512M target/image.tar target/output.img
 
 docker rm "$NEW_DOCKER_CONTAINER_ID"
