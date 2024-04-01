@@ -29,6 +29,10 @@
             url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.6.tar.xz";
             sha256 = "1lrp7pwnxnqyy8c2l4n4nz997039gbnssrfm8ss8kl3h2c7fr2g4";
           };
+          cloud_hypervisor_src = builtins.fetchurl {
+            url = "https://github.com/cloud-hypervisor/cloud-hypervisor/archive/refs/tags/v38.0.tar.gz";
+            sha256 = "0rz9vmch6izbv4hxvsx8prgn4llkvwzl6q2bs7xgcrpvzhlv8zlx";
+          };
           # TODO: b/328294742 - This derivation does not currently compile correctly, but it is a starting point.
           oak_containers_kernel = pkgs.stdenv.mkDerivation {
             name = "oak_containers_kernel";
@@ -51,6 +55,26 @@
             buildPhase = ''
               make target/vmlinux
               cp target/vmlinux $out
+            '';
+            installPhase = ''
+              '';
+          };
+          oak_on_prem_cloud_hypervisor = pkgs.stdenv.mkDerivation {
+            name = "oak_on_prem_cloud_hypervisor";
+            src = "./oak_on_prem_cloud_hypervisor";
+            buildInputs = with pkgs; [
+              bison
+              flex
+              glibc
+              qemu-utils
+              libuuid
+            ];
+            baseInputs = [
+              cloud_hypervisor_src
+            ];
+            buildPhase = ''
+              make
+              cp target/cloud-hypervisor $out
             '';
             installPhase = ''
               '';
@@ -100,6 +124,7 @@
             version = "0.1.0";
             cargoExtraArgs = "--package=xtask";
           };
+          # TODO: b/328294742 - This derivation does not currently compile correctly, but it is a starting point.
         in
         {
           packages = { };
@@ -206,6 +231,21 @@
                 umoci
               ];
             };
+            # Oak on-prem builds disk image for the guest VM
+            oak_on_prem = with pkgs; mkShell {
+              shellHook = ''
+	        export CLOUD_HYPERVISOR_SRC_TAR="${cloud_hypervisor_src}"
+              '';
+              inputsFrom = [
+	        containers
+                oak_on_prem_cloud_hypervisor
+              ];
+              packages = [
+                cargo-xbuild
+                guestfs-tools
+                nasm
+              ];
+            };
             # Shell for container kernel image provenance workflow.
             bzImageProvenance = with pkgs; mkShell {
               inputsFrom = [
@@ -247,6 +287,7 @@
                 rust
                 bazelShell
                 lint
+                oak_on_prem
               ];
             };
           };

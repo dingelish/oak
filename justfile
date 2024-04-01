@@ -94,3 +94,7 @@ kokoro_run_tests: all_ensure_no_std
 
 clang-tidy:
     bazel build --config=clang-tidy //cc/...
+
+oak_on_prem_cloud_hypervisor:
+    env --chdir=oak_on_prem_cloud_hypervisor make
+
