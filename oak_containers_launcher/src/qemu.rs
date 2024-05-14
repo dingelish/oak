@@ -135,7 +135,9 @@ impl Qemu {
         // restart should be treated as a failure)
         cmd.arg("-no-reboot");
         // Use the `microvm` machine as the basis, and ensure ACPI and PCIe are enabled.
-        cmd.args(["-machine", "microvm,acpi=on,pcie=on"]);
+        cmd.args(["-machine", "microvm,acpi=on,pcie=on,confidential-guest-support=sev0,memory-backend=ram1"]);
+        cmd.args(["-object", "memory-backend-memfd,id=ram1,size=8G,share=true,reserve=false"]);
+        cmd.args(["-object", "sev-snp-guest,id=sev0,cbitpos=51,reduced-phys-bits=1,id-auth="]);
         // Route first serial port to console.
         if let Some(port) = params.telnet_console {
             cmd.args(["-serial", format!("telnet:localhost:{port},server").as_str()]);
@@ -187,7 +189,6 @@ impl Qemu {
                 format!("brd.rd_size={ramdrive_size}").as_str(),
                 "brd.max_part=1",
                 format!("ip={vm_address}:::255.255.255.0::eth0:off").as_str(),
-                "quiet",
             ]
             .join(" ")
             .as_str(),

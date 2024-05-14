@@ -56,19 +56,33 @@ struct Args {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
+    println!("stage1 main starts");
     let args = Args::parse();
+    println!("stage1 arguments: {:?}", args);
     if !Path::new("/dev").try_exists()? {
+        println!("stage1 creating dir /dev");
         create_dir("/dev").context("error creating /dev")?;
+        println!("stage1 create /dev succeeded");
     }
+    println!("stage1 trying to mount /dev");
     mount(None::<&str>, "/dev", Some("devtmpfs"), MsFlags::empty(), None::<&str>)
         .context("error mounting /dev")?;
+    println!("stage1 mount /dev successfully");
 
+    println!("stage1 trying to run /mke2fs /dev/ram0");
     Command::new("/mke2fs").args(["/dev/ram0"]).spawn()?.wait().await?;
+    println!("stage 1 run mke2fs completed");
+    println!("stage 1 probing /rootfs");
     if !Path::new("/rootfs").try_exists()? {
+        println!("stage 1 does not find /rootfs. creating dir");
         create_dir("/rootfs").context("error creating /rootfs")?;
+        println!("stage 1 cannot create /rootfs");
     }
+    println!("stage 1 has /rootfs ready");
+    println!("stage 1 trying to mount /dev/ram0 to /rootfs");
     mount(Some("/dev/ram0"), "/rootfs", Some("ext4"), MsFlags::empty(), None::<&str>)
         .context("error mounting ramdrive to /rootfs")?;
+    println!("stage 1 mount /rootfs succeeded!");
 
     // Mount /sys so that we can read the memory map.
     if !Path::new("/sys").try_exists()? {
