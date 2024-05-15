@@ -166,7 +166,7 @@ impl Qemu {
             ));
         };
         cmd.args(["-netdev", netdev_rules.join(",").as_str()]);
-        cmd.args(["-device", "virtio-net,netdev=netdev,rombar=0"]);
+        cmd.args(["-device", "virtio-net-pci,disable-legacy=on,iommu_platform=true,netdev=netdev,romfile="]);
         if let Some(virtio_guest_cid) = params.virtio_guest_cid {
             cmd.args([
                 "-device",
