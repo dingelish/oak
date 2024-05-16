@@ -107,6 +107,7 @@ impl ZeroPage {
             // correctly by the kernel.
             let dest = &mut self.inner.hdr.as_bytes_mut()[..src.len()];
             dest.copy_from_slice(src);
+            self.inner.hdr.type_of_loader = 0xFF;
             measurement
         })
     }
