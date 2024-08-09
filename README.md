@@ -215,7 +215,7 @@ The solution implemented is to sign not only the digests when a new release is
 created, but also to log this signature to an external append-only verifiable
 log. Oak relies on [Rekor](https://docs.sigstore.dev/logging/overview/) (by
 Sigstore) as the external verifiable log for this purpose. As part of the
-[Transparent Release process](#transparent-release), the signature is logged to Rekor, and an inclusion
+[Transparent Release](#transparent-release) process the signature is logged to Rekor, and an inclusion
 proof (or inclusion promise) is obtained from it, signed by Rekor's root key.
 This is then stored alongside the binary artifact in question, and provided to
 nodes that may want to verify the identity of the Enclave Application. This
