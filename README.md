@@ -105,7 +105,7 @@ outputs, or side effects of the computation.
 
 The following is a simplified architectural diagram.
 
-![architectural_overview](docs/images/OakDiagramOverview.png){:height="800px"}
+![architectural_overview](docs/images/OakDiagramOverview.png)
 
 # Operating System
 
