@@ -228,7 +228,7 @@ We acknowledge that perfect security is impossible. In general, having a smaller
 Trusted Computing Base (TCB) is better, and Oak tries to minimize the TCB to the
 minimum components that need to be trusted.
 
-### Untrusted
+**Untrusted**
 
 Oak is designed to be verifiably trustworthy without needing to trust the
 following:
@@ -248,7 +248,7 @@ the TEE, not accessible by the service provider hosting the hardware machines.
 The Oak architecture allows applications to make stronger claims by reducing the
 need to trust the service provider.
 
-### Trusted-but-verifiable
+**Trusted-but-verifiable**
 
 - Oak trusted platform
 - Enclave application
@@ -259,7 +259,7 @@ Oak establishes trust for these components by open sourcing them, and enables
 external inspection and verification via
 [Transparent Release](#transparent-release).
 
-### Trusted
+**Trusted**
 
 - Hardware TEE manufacturer (e.g. AMD, Intel)
 
@@ -273,7 +273,7 @@ Applications running on TEEs to present evidence rooted in the manufacturer of
 the TEE itself. Additional TEE models and manufacturers may be supported by Oak
 over time.
 
-### Side channel attack
+**Side channel attack**
 
 [Side-channel attacks](https://en.wikipedia.org/wiki/Side-channel_attack)
 present significant challenges for confidential computing environments. We
