@@ -105,7 +105,7 @@ outputs, or side effects of the computation.
 
 The following is a simplified architectural diagram.
 
-![architectural_overview](docs/images/OakDiagramOverview.png)
+![architectural_overview](docs/images/OakDiagramOverview.svg)
 
 # Operating System
 
@@ -275,20 +275,9 @@ over time.
 
 # Side channel attack
 
-[Side-channel attack](https://en.wikipedia.org/wiki/Side-channel_attack)
-presents significant challenges for confidential computing environments. We
-acknowledge that most existing TEEs have compromises and may be vulnerable to
-various kinds of attacks. This is an active research area, both hardware and
-software innovations are needed to defend against such attacks. Service
-providers hosting the TEE based servers need to implement strong host security.
-Strong security requires
-[defense in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>).
+[Side-channel attacks](https://en.wikipedia.org/wiki/Side-channel_attack) present significant challenges for confidential computing environments. We acknowledge that most existing TEEs have compromises and may be vulnerable to various kinds of side-channel attacks. This is an active research area, both hardware and software innovations are needed to defend against such attacks. Service providers hosting the TEE based servers need to implement strong host security. Strong security requires [defense in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>).
 
-Attacks that require physical access to the server hardware is another class of
-attacks that Oak and TEE hardware manufacturers cannot defend alone. Physical
-attacks are expensive, impractical, therefore not scalable. To defend against
-it, service providers need to implement strong physical security in their data
-centers.
+Attacks that require physical access to the server hardware is another class of attacks that Oak and TEE hardware manufacturers cannot defend against alone. Physical attacks are expensive and therefore not scalable. To defend against them, service providers need to implement strong physical security in their data centers.
 
 # Getting involved
 
