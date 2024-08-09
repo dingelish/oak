@@ -292,7 +292,6 @@ centers.
 
 ## Getting involved
 
-We welcome
-[contributors](https://github.com/project-oak/oak/blob/main/docs/CONTRIBUTING.md)!
-To join our community, we recommend joining the
+We welcome [contributors](docs/CONTRIBUTING.md)! To join our community, we
+recommend joining the
 [mailing list](https://groups.google.com/g/project-oak-discuss).
