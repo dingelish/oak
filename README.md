@@ -146,7 +146,7 @@ TEE (the Enclave Application).
 Oak uses a multi-stage protocol in order to measure the identity of each layer
 in the boot process (beyond just the bootloader) and cryptographically bind it
 together with the TEE evidence. The
-[Oak Stage 0 virtual firmware](https://github.com/project-oak/oak/tree/main/stage0)
+[Oak Stage 0 virtual firmware](stage0)
 is pre-loaded into the VM memory, and it is covered by the TEE attestation
 report. To cover the later boot stages, Oak relies on the
 [Device Identifier Composition Engine (DICE)](https://trustedcomputinggroup.org/work-groups/dice-architectures/)
@@ -183,7 +183,7 @@ produces the same exact measurement digest. This gives the reviewer confidence
 that the code version they are reviewing is the exact same code version that was
 loaded into the enclave during startup.
 
-# [Transparent Release]
+# Transparent Release
 
 Transparent Release is a set of formats and tools that allow developers to
 publish and consume claims about binary artifacts in a transparent and
