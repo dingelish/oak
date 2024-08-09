@@ -90,8 +90,8 @@ This architecture means the service provider would not be able to swap the
 Enclave Application binary with a different (potentially malicious) one without
 being detected. If the service provider were to introduce a backdoor in the
 Enclave Application, it would have to sign the binary and publish it in a
-verifiable log via the [Transparent Release](#transparent-release) process,
-which would make the backdoor irreversibly visible to external observers.
+verifiable log via the Transparent Release process, which would make the
+backdoor irreversibly visible to external observers.
 
 ## Sealed Computing
 
@@ -214,13 +214,12 @@ The solution implemented is to sign not only the digests when a new release is
 created, but also to log this signature to an external append-only verifiable
 log. Oak relies on [Rekor](https://docs.sigstore.dev/logging/overview/) (by
 Sigstore) as the external verifiable log for this purpose. As part of the
-[Transparent Release](#transparent-release) process the signature is logged to
-Rekor, and an inclusion proof (or inclusion promise) is obtained from it, signed
-by Rekor's root key. This is then stored alongside the binary artifact in
-question, and provided to nodes that may want to verify the identity of the
-Enclave Application. This makes it impossible for the developer to insert a
-backdoor in the Enclave Application without also logging it to the verifiable
-log.
+Transparent Release process the signature is logged to Rekor, and an inclusion
+proof (or inclusion promise) is obtained from it, signed by Rekor's root key.
+This is then stored alongside the binary artifact in question, and provided to
+nodes that may want to verify the identity of the Enclave Application. This
+makes it impossible for the developer to insert a backdoor in the Enclave
+Application without also logging it to the verifiable log.
 
 ## Trust Model
 
@@ -228,7 +227,7 @@ We acknowledge that perfect security is impossible. In general, having a smaller
 Trusted Computing Base (TCB) is better, and Oak tries to minimize the TCB to the
 minimum components that need to be trusted.
 
-**Untrusted**
+### Untrusted
 
 Oak is designed to be verifiably trustworthy without needing to trust the
 following:
@@ -248,7 +247,7 @@ the TEE, not accessible by the service provider hosting the hardware machines.
 The Oak architecture allows applications to make stronger claims by reducing the
 need to trust the service provider.
 
-**Trusted-but-verifiable**
+### Trusted-but-verifiable
 
 - Oak trusted platform
 - Enclave application
@@ -256,10 +255,9 @@ need to trust the service provider.
 Both the Oak platform libraries and components, and the Enclave Application that
 runs on that platform, run inside the TEE. They have access to unencrypted data.
 Oak establishes trust for these components by open sourcing them, and enables
-external inspection and verification via
-[Transparent Release](#transparent-release).
+external inspection and verification via Transparent Release.
 
-**Trusted**
+### Trusted
 
 - Hardware TEE manufacturer (e.g. AMD, Intel)
 
@@ -273,7 +271,7 @@ Applications running on TEEs to present evidence rooted in the manufacturer of
 the TEE itself. Additional TEE models and manufacturers may be supported by Oak
 over time.
 
-**Side channel attack**
+### Side channel attacks
 
 [Side-channel attacks](https://en.wikipedia.org/wiki/Side-channel_attack)
 present significant challenges for confidential computing environments. We
