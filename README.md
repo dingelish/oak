@@ -33,7 +33,7 @@ of that node. The software identity of an Enclave Application consists of
 measurements (i.e. digests / hashes) of the executable binaries that contribute
 to it, as well as additional data (e.g. configuration).
 
-# Root of Trust
+## Root of Trust
 
 Oak focuses on VM-based
 [Trusted Execution Environments (TEEs)](https://en.wikipedia.org/wiki/Trusted_execution_environment)
@@ -45,7 +45,7 @@ AMD, Intel); this reduces (ideally, removes) the need to trust the service
 provider of that node in order to validate its evidence, by distributing trust
 across multiple non colluding actors.
 
-# Encrypted Communication
+## Encrypted Communication
 
 At startup, each Enclave Application generates a local key pair, and binds the
 public key to its own evidence. When a node intends to communicate with an
@@ -64,7 +64,7 @@ This encrypted and attested channel provides:
 - Authenticity: each node knows the identity of the binary in any attested node
   processing the data it sends over the channel.
 
-# Split Architecture
+## Split Architecture
 
 In order to minimize the attack surface and the Trusted Computing Base (TCB) of
 an Enclave Application, Oak encourages a split architecture:
@@ -93,7 +93,7 @@ Enclave Application, it would have to sign the binary and publish it in a
 verifiable log via the [Transparent Release](#transparent-release) process,
 which would make the backdoor irreversibly visible to external observers.
 
-# Sealed Computing
+## Sealed Computing
 
 A canonical use of Oak is to build privacy-preserving sealed computing
 applications.
@@ -107,7 +107,7 @@ The following is a simplified architectural diagram.
 
 ![architectural_overview](docs/images/OakDiagramOverview.svg)
 
-# Operating System
+## Operating System
 
 Oak supports two flavors of Operating Systems within the TEE, on which Enclave
 Applications may be deployed:
@@ -137,7 +137,7 @@ Applications may be deployed:
   reason about the behavior of an application, which in turn makes the review
   process more complicated.
 
-# Remote Attestation
+## Remote Attestation
 
 Remote Attestation is a process by which a TEE provides evidence to a remote
 party about its own state and the identity of the workload running inside the
@@ -145,10 +145,9 @@ TEE (the Enclave Application).
 
 Oak uses a multi-stage protocol in order to measure the identity of each layer
 in the boot process (beyond just the bootloader) and cryptographically bind it
-together with the TEE evidence. The
-[Oak Stage 0 virtual firmware](stage0)
-is pre-loaded into the VM memory, and it is covered by the TEE attestation
-report. To cover the later boot stages, Oak relies on the
+together with the TEE evidence. The [Oak Stage 0 virtual firmware](stage0) is
+pre-loaded into the VM memory, and it is covered by the TEE attestation report.
+To cover the later boot stages, Oak relies on the
 [Device Identifier Composition Engine (DICE)](https://trustedcomputinggroup.org/work-groups/dice-architectures/)
 approach, where each boot stage is responsible for measuring the next stage. Oak
 augments the attestation report with this additional evidence so that the
@@ -183,7 +182,7 @@ produces the same exact measurement digest. This gives the reviewer confidence
 that the code version they are reviewing is the exact same code version that was
 loaded into the enclave during startup.
 
-# Transparent Release
+## Transparent Release
 
 Transparent Release is a set of formats and tools that allow developers to
 publish and consume claims about binary artifacts in a transparent and
@@ -215,20 +214,21 @@ The solution implemented is to sign not only the digests when a new release is
 created, but also to log this signature to an external append-only verifiable
 log. Oak relies on [Rekor](https://docs.sigstore.dev/logging/overview/) (by
 Sigstore) as the external verifiable log for this purpose. As part of the
-[Transparent Release](#transparent-release) process the signature is logged to Rekor, and an inclusion
-proof (or inclusion promise) is obtained from it, signed by Rekor's root key.
-This is then stored alongside the binary artifact in question, and provided to
-nodes that may want to verify the identity of the Enclave Application. This
-makes it impossible for the developer to insert a backdoor in the Enclave
-Application without also logging it to the verifiable log.
+[Transparent Release](#transparent-release) process the signature is logged to
+Rekor, and an inclusion proof (or inclusion promise) is obtained from it, signed
+by Rekor's root key. This is then stored alongside the binary artifact in
+question, and provided to nodes that may want to verify the identity of the
+Enclave Application. This makes it impossible for the developer to insert a
+backdoor in the Enclave Application without also logging it to the verifiable
+log.
 
-# Trust Model
+## Trust Model
 
 We acknowledge that perfect security is impossible. In general, having a smaller
 Trusted Computing Base (TCB) is better, and Oak tries to minimize the TCB to the
 minimum components that need to be trusted.
 
-# Untrusted
+### Untrusted
 
 Oak is designed to be verifiably trustworthy without needing to trust the
 following:
@@ -248,7 +248,7 @@ the TEE, not accessible by the service provider hosting the hardware machines.
 The Oak architecture allows applications to make stronger claims by reducing the
 need to trust the service provider.
 
-# Trusted-but-verifiable
+### Trusted-but-verifiable
 
 - Oak trusted platform
 - Enclave application
@@ -259,7 +259,7 @@ Oak establishes trust for these components by open sourcing them, and enables
 external inspection and verification via
 [Transparent Release](#transparent-release).
 
-# Trusted
+### Trusted
 
 - Hardware TEE manufacturer (e.g. AMD, Intel)
 
@@ -273,13 +273,24 @@ Applications running on TEEs to present evidence rooted in the manufacturer of
 the TEE itself. Additional TEE models and manufacturers may be supported by Oak
 over time.
 
-# Side channel attack
+### Side channel attack
 
-[Side-channel attacks](https://en.wikipedia.org/wiki/Side-channel_attack) present significant challenges for confidential computing environments. We acknowledge that most existing TEEs have compromises and may be vulnerable to various kinds of side-channel attacks. This is an active research area, both hardware and software innovations are needed to defend against such attacks. Service providers hosting the TEE based servers need to implement strong host security. Strong security requires [defense in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>).
+[Side-channel attacks](https://en.wikipedia.org/wiki/Side-channel_attack)
+present significant challenges for confidential computing environments. We
+acknowledge that most existing TEEs have compromises and may be vulnerable to
+various kinds of side-channel attacks. This is an active research area, both
+hardware and software innovations are needed to defend against such attacks.
+Service providers hosting the TEE based servers need to implement strong host
+security. Strong security requires
+[defense in depth](<https://en.wikipedia.org/wiki/Defense_in_depth_(computing)>).
 
-Attacks that require physical access to the server hardware is another class of attacks that Oak and TEE hardware manufacturers cannot defend against alone. Physical attacks are expensive and therefore not scalable. To defend against them, service providers need to implement strong physical security in their data centers.
+Attacks that require physical access to the server hardware is another class of
+attacks that Oak and TEE hardware manufacturers cannot defend against alone.
+Physical attacks are expensive and therefore not scalable. To defend against
+them, service providers need to implement strong physical security in their data
+centers.
 
-# Getting involved
+## Getting involved
 
 We welcome
 [contributors](https://github.com/project-oak/oak/blob/main/docs/CONTRIBUTING.md)!
