@@ -41,6 +41,7 @@ members = [
   "oak_proto_rust",
   "oak_proto_rust/grpc",
   "oak_proto_rust/micro_rpc",
+  "oak_restricted_kernel",
   "oak_restricted_kernel_dice",
   "oak_restricted_kernel_interface",
   "oak_restricted_kernel_sdk",
@@ -48,10 +49,12 @@ members = [
   "oak_session_wasm",
   "oak_sev_guest",
   "oak_sev_snp_attestation_report",
+  "oak_simple_io",
   "stage0",
   "sev_serial",
   "stage0_dice",
   "oak_restricted_kernel_sdk_proc_macro",
+  "oak_virtio",
 ]
 exclude = [
   "enclave_applications",
@@ -116,6 +119,7 @@ oak_linux_boot_params = { path = "./oak_linux_boot_params" }
 oak_logger = { path = "./oak_functions/logger" }
 oak_micro_rpc = { path = "./oak_proto_rust/micro_rpc" }
 oak_proto_rust = { path = "./oak_proto_rust" }
+oak_restricted_kernel = { path = "./oak_restricted_kernel" }
 oak_restricted_kernel_dice = { path = "./oak_restricted_kernel_dice" }
 oak_restricted_kernel_sdk = { path = "./oak_restricted_kernel_sdk" }
 oak_restricted_kernel_sdk_proc_macro = { path = "./oak_restricted_kernel_sdk_proc_macro" }
@@ -124,7 +128,9 @@ oak_session = { path = "./oak_session" }
 oak_stage0 = { path = "./stage0" }
 oak_sev_guest = { path = "./oak_sev_guest" }
 oak_sev_snp_attestation_report = { path = "./oak_sev_snp_attestation_report" }
+oak_simple_io = { path = "./oak_simple_io" }
 oak_stage0_dice = { path = "./stage0_dice" }
+oak_virtio = { path = "./oak_virtio" }
 sev_serial = { path = "./sev_serial" }
 # Common external crates.
 prost = { version = "*", default-features = false, features = ["prost-derive"] }
